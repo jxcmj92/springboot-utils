@@ -1,0 +1,7 @@
+使用该工具类前必须处理的事情：
+1. 加入maven依赖
+   <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-aop</artifactId>
+      <version>2.0.6.RELEASE</version>
+   </dependency>

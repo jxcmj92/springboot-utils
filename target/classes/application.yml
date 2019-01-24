@@ -1,0 +1,10 @@
+server:
+  port: 1111
+
+spring:
+  mail:
+    host: smtp.exmail.qq.com
+    username: chenmingjian@beeseven.com
+    password: aA2824406956
+    default-encoding: UTF-8
+

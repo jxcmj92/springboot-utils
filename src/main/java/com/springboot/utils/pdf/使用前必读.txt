@@ -1,0 +1,14 @@
+使用该工具类前必须处理的事情：
+1.准备好pdf模板(用软件Adobe Acrobat pro生成，具体步骤参照地址：)
+2. 加入maven依赖
+     <dependency>
+        <groupId>com.itextpdf</groupId>
+        <artifactId>itextpdf</artifactId>
+        <version>5.4.3</version>
+     </dependency>
+
+     <dependency>
+        <groupId>com.itextpdf</groupId>
+        <artifactId>itext-asian</artifactId>
+        <version>5.2.0</version>
+     </dependency>
