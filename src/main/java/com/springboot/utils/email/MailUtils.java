@@ -14,9 +14,9 @@ import javax.mail.internet.MimeMessage;
 import java.io.File;
 
 /**
- * @description:
- * @author :
- * @date :
+ * @description: 邮件发送工具类
+ * @author : chenmingjian
+ * @date : 2019-01-24
  */
 
 @Service
@@ -51,9 +51,9 @@ public class MailUtils {
     /**
      *   发送HTML邮件
      *
-     * @param to
-     * @param subject
-     * @param content
+     * @param to  接收人
+     * @param subject 主题
+     * @param content  邮件内容
      */
     public void sendHtmlMail(String to,String subject,String content) throws Exception {
 
@@ -70,9 +70,9 @@ public class MailUtils {
     /**
      *  发送带副本的邮件
      *
-     * @param to
-     * @param subject
-     * @param content
+     * @param to  接收人
+     * @param subject 主题
+     * @param content  邮件内容
      */
     public void sendAttachmentMail(String to,String subject,String content,String filepath) throws Exception {
         MimeMessage message = mailSender.createMimeMessage();
@@ -96,9 +96,9 @@ public class MailUtils {
     /**
      *  发送图片邮件
      *
-     * @param to
-     * @param subject
-     * @param content
+     * @param to  接收人
+     * @param subject 主题
+     * @param content  邮件内容
      * @param rscPath
      * @param rscId
      * @throws Exception
