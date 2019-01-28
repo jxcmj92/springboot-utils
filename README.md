@@ -5,4 +5,4 @@
 - maven
 
 ## 工具类目录
-**邮件发送**[https://blog.csdn.net/qq_32258777/article/details/86641728](https://blog.csdn.net/qq_32258777/article/details/86641728)
+**邮件发送**:[https://blog.csdn.net/qq_32258777/article/details/86641728](https://blog.csdn.net/qq_32258777/article/details/86641728)
