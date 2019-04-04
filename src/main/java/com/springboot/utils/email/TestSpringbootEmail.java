@@ -27,7 +27,7 @@ public class TestSpringbootEmail {
     @Test
     public void sendSimpleMailTest(){
 
-        mailUtils.sendSimpleMail("chenmingjian92@163.com","简单文本邮件","这是我的第一封邮件,哈哈...");
+        mailUtils.sendSimpleMail("chenmingjian@beeseven.com","简单文本邮件","这是我的第一封邮件,哈哈...");
     }
 
     /**
@@ -55,9 +55,9 @@ public class TestSpringbootEmail {
      */
     @Test
     public void sendAttachmentMailTest() throws Exception{
-        String filepath = "/home/chenmingjian/Downloads/2019-01-24.xlsx";
+        String filepath = "/home/chenmingjian/Downloads/分析.xlsx";
 
-        mailUtils.sendAttachmentMail("chenmingjian92@163.com","发送副本","这是一篇带附件的邮件",filepath);
+        mailUtils.sendAttachmentMail("chenmingjian@smart-dec.com","发送副本","这是一篇带附件的邮件",filepath);
 
     }
 

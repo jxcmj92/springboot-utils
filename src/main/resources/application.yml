@@ -3,8 +3,8 @@ server:
 
 spring:
   mail:
-    host: smtp.exmail.qq.com
-    username: chenmingjian@beeseven.com
-    password: aA2824406956
+    host: smtp.163.com
+    username: beesevenhuace@163.com
+    password: a123456789
     default-encoding: UTF-8
 

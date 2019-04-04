@@ -10,6 +10,7 @@ import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Service;
 
+import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 import java.io.File;
 
@@ -76,6 +77,7 @@ public class MailUtils {
      */
     public void sendAttachmentMail(String to,String subject,String content,String filepath) throws Exception {
         MimeMessage message = mailSender.createMimeMessage();
+        message.addRecipients(MimeMessage.RecipientType.CC, InternetAddress.parse("beesevenhuace@163.com"));
         MimeMessageHelper helper = new MimeMessageHelper(message,true);
         helper.setFrom(from);
         helper.setTo(to);
