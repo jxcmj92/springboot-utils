@@ -1,4 +1,4 @@
-package com.springboot.utils.excel;
+package com.beesevenrepos.poc.utils;
 
 import com.alibaba.excel.EasyExcelFactory;
 import com.alibaba.excel.ExcelWriter;
@@ -34,6 +34,10 @@ public class ExcelUtil {
       //设置自适应宽度
       initSheet.setAutoWidth(Boolean.TRUE);
    }
+
+
+
+
 
    /**
     * 读取少于1000行数据
@@ -163,7 +167,7 @@ public class ExcelUtil {
             }
 
          } catch (IOException e) {
-            log.error("excel文件读取失败, 失败原因：{}", e);
+            log.error("excel文件导出失败, 失败原因：{}", e);
          }
       }
 
@@ -210,7 +214,7 @@ public class ExcelUtil {
                outputStream.close();
             }
          } catch (IOException e) {
-            log.error("excel文件读取失败, 失败原因：{}", e);
+            log.error("excel文件导出失败, 失败原因：{}", e);
          }
       }
 
@@ -222,7 +226,7 @@ public class ExcelUtil {
     * @param multipleSheelPropetys
     */
    public static void writeWithMultipleSheel(String filePath,List<MultipleSheelPropety> multipleSheelPropetys){
-      if(CollectionUtils.isEmpty(multipleSheelPropetys) || CollectionUtils.isEmpty(multipleSheelPropetys.get(0).getData())){
+      if(CollectionUtils.isEmpty(multipleSheelPropetys)){
          return;
       }
 
@@ -233,7 +237,10 @@ public class ExcelUtil {
          writer = EasyExcelFactory.getWriter(outputStream);
          for (MultipleSheelPropety multipleSheelPropety : multipleSheelPropetys) {
             Sheet sheet = multipleSheelPropety.getSheet() != null ? multipleSheelPropety.getSheet() : initSheet;
-            sheet.setClazz(multipleSheelPropety.getData().get(0).getClass());
+            if(!CollectionUtils.isEmpty(multipleSheelPropety.getData())){
+               sheet.setClazz(multipleSheelPropety.getData().get(0).getClass());
+            }
+
             writer.write(multipleSheelPropety.getData(), sheet);
          }
 
@@ -249,7 +256,7 @@ public class ExcelUtil {
                outputStream.close();
             }
          } catch (IOException e) {
-            log.error("excel文件读取失败, 失败原因：{}", e);
+            log.error("excel文件导出失败, 失败原因：{}", e);
          }
       }
 
