@@ -8,3 +8,10 @@ spring:
     password: a123456789
     default-encoding: UTF-8
 
+
+thread:
+  pool:
+    corePoolSize: 5
+    maxPoolSize: 50
+    queueCapacity: 1000
+    keepAliveSeconds: 300

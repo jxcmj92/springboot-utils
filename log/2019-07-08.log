@@ -1,0 +1,16 @@
+2019-07-08 17:09:04.938 [main] INFO  c.s.u.e.Test Caller+0	 at org.springframework.boot.StartupInfoLogger.logStarting(StartupInfoLogger.java:50)
+ - Starting Test on asus with PID 8927 (started by chenmingjian in /home/chenmingjian/workProjects/fengkong-2/poc/source/trunk/springboot-utils)
+2019-07-08 17:09:04.942 [main] INFO  c.s.u.e.Test Caller+0	 at org.springframework.boot.SpringApplication.logStartupProfileInfo(SpringApplication.java:675)
+ - No active profile set, falling back to default profiles: default
+2019-07-08 17:09:07.680 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker Caller+0	 at org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker.postProcessAfterInitialization(PostProcessorRegistrationDelegate.java:330)
+ - Bean 'threadPoolConfig' of type [com.springboot.utils.thread.ThreadPoolConfig] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-07-08 17:09:08.096 [main] INFO  o.s.s.c.ThreadPoolTaskExecutor Caller+0	 at org.springframework.scheduling.concurrent.ExecutorConfigurationSupport.initialize(ExecutorConfigurationSupport.java:171)
+ - Initializing ExecutorService 'taskExecutor'
+2019-07-08 17:09:10.495 [main] INFO  o.s.s.c.ThreadPoolTaskScheduler Caller+0	 at org.springframework.scheduling.concurrent.ExecutorConfigurationSupport.initialize(ExecutorConfigurationSupport.java:171)
+ - Initializing ExecutorService 'taskScheduler'
+2019-07-08 17:09:10.621 [main] INFO  c.s.u.e.Test Caller+0	 at org.springframework.boot.StartupInfoLogger.logStarted(StartupInfoLogger.java:59)
+ - Started Test in 6.977 seconds (JVM running for 10.298)
+2019-07-08 17:09:13.457 [Thread-2] INFO  o.s.s.c.ThreadPoolTaskScheduler Caller+0	 at org.springframework.scheduling.concurrent.ExecutorConfigurationSupport.shutdown(ExecutorConfigurationSupport.java:208)
+ - Shutting down ExecutorService 'taskScheduler'
+2019-07-08 17:09:13.458 [Thread-2] INFO  o.s.s.c.ThreadPoolTaskExecutor Caller+0	 at org.springframework.scheduling.concurrent.ExecutorConfigurationSupport.shutdown(ExecutorConfigurationSupport.java:208)
+ - Shutting down ExecutorService 'taskExecutor'

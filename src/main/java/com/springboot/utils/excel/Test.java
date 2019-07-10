@@ -9,6 +9,7 @@ import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -23,10 +24,10 @@ import java.util.List;
 public class Test {
 
     /**
-     * 读取少于1000行的excle
+     * 读取少于1000行的excel
      */
     @org.junit.Test
-    public void readLessThan1000Row(){
+    public void readLessThan1000Row() throws IOException {
         String filePath = "/home/chenmingjian/Downloads/测试.xlsx";
         List<Object> objects = ExcelUtil.readLessThan1000Row(filePath);
         objects.forEach(System.out::println);
@@ -36,19 +37,23 @@ public class Test {
      * 读取少于1000行的excle，可以指定sheet和从几行读起
      */
     @org.junit.Test
-    public void readLessThan1000RowBySheet(){
+    public void readLessThan1000RowBySheet() throws IOException {
         String filePath = "/home/chenmingjian/Downloads/测试.xlsx";
+        //表示从sheet1表格中，从第二行开始读取
         Sheet sheet = new Sheet(1, 1);
-        List<Object> objects = ExcelUtil.readLessThan1000RowBySheet(filePath,sheet);
+        List<Object> objects = ExcelUtil.readLessThan1000Row(filePath,sheet);
+
+        //也可以这样表示： 从sheet1表格中，从第二行开始读取
+       // List<Object> objects = ExcelUtil.readLessThan1000Row(filePath,ExcelUtil.NON_HEADER_SHEET);
         objects.forEach(System.out::println);
     }
 
     /**
-     * 读取大于1000行的excle
+     * 读取大于1000行的excel
      * 带sheet参数的方法可参照测试方法readLessThan1000RowBySheet()
      */
     @org.junit.Test
-    public void readMoreThan1000Row(){
+    public void readMoreThan1000Row() throws IOException {
         String filePath = "/home/chenmingjian/Downloads/测试.xlsx";
         List<Object> objects = ExcelUtil.readMoreThan1000Row(filePath);
         objects.forEach(System.out::println);
@@ -56,27 +61,27 @@ public class Test {
 
 
     /**
-     * 生成excle
+     * 生成excel
      * 带sheet参数的方法可参照测试方法readLessThan1000RowBySheet()
      */
     @org.junit.Test
-    public void writeBySimple(){
+    public void writeBySimple() throws IOException {
         String filePath = "/home/chenmingjian/Downloads/测试.xlsx";
         List<List<Object>> data = new ArrayList<>();
         data.add(Arrays.asList("111","222","333"));
         data.add(Arrays.asList("111","222","333"));
         data.add(Arrays.asList("111","222","333"));
         List<String> head = Arrays.asList("表头1", "表头2", "表头3");
-        ExcelUtil.writeBySimple(filePath,data,head);
+        ExcelUtil.writeToFilePath(filePath,data,head);
     }
 
 
     /**
-     * 生成excle, 带用模型
+     * 生成excel, 带用模型
      * 带sheet参数的方法可参照测试方法readLessThan1000RowBySheet()
      */
     @org.junit.Test
-    public void writeWithTemplate(){
+    public void writeWithTemplate() throws IOException {
         String filePath = "/home/chenmingjian/Downloads/测试.xlsx";
         ArrayList<TableHeaderExcelProperty> data = new ArrayList<>();
         for(int i = 0; i < 4; i++){
@@ -86,16 +91,16 @@ public class Test {
             tableHeaderExcelProperty.setSchool("清华大学" + i);
             data.add(tableHeaderExcelProperty);
         }
-        ExcelUtil.writeWithTemplate(filePath,data);
+        ExcelUtil.writeWithTemplateToFilePath(filePath,data);
     }
 
 
     /**
-     * 生成excle, 带用模型,带多个sheet
+     * 生成excel, 带用模型,带多个sheet
      */
     @org.junit.Test
-    public void writeWithMultipleSheel(){
-        ArrayList<ExcelUtil.MultipleSheelPropety> list1 = new ArrayList<>();
+    public void writeWithMultipleSheet() throws IOException {
+        ArrayList<ExcelUtil.MultipleSheetProperty> list1 = new ArrayList<>();
         for(int j = 1; j < 4; j++){
             ArrayList<TableHeaderExcelProperty> list = new ArrayList<>();
             for(int i = 0; i < 4; i++){
@@ -109,15 +114,15 @@ public class Test {
             Sheet sheet = new Sheet(j, 0);
             sheet.setSheetName("sheet" + j);
 
-            ExcelUtil.MultipleSheelPropety multipleSheelPropety = new ExcelUtil.MultipleSheelPropety();
-            multipleSheelPropety.setData(list);
-            multipleSheelPropety.setSheet(sheet);
+            ExcelUtil.MultipleSheetProperty multipleSheetProperty = new ExcelUtil.MultipleSheetProperty();
+            multipleSheetProperty.setData(list);
+            multipleSheetProperty.setSheet(sheet);
 
-            list1.add(multipleSheelPropety);
+            list1.add(multipleSheetProperty);
 
         }
 
-        ExcelUtil.writeWithMultipleSheel("/home/chenmingjian/Downloads/aaa.xlsx",list1);
+        ExcelUtil.writeWithMultipleSheet("/home/chenmingjian/Downloads/aaa.xlsx",list1);
 
     }
 
