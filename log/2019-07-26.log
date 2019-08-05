@@ -1,0 +1,64 @@
+2019-07-26 14:45:06.186 [main] INFO  c.s.u.e.Test Caller+0	 at org.springframework.boot.StartupInfoLogger.logStarting(StartupInfoLogger.java:50)
+ - Starting Test on asus with PID 18369 (started by chenmingjian in /home/chenmingjian/workProjects/fengkong-2/poc/source/trunk/springboot-utils)
+2019-07-26 14:45:06.190 [main] INFO  c.s.u.e.Test Caller+0	 at org.springframework.boot.SpringApplication.logStartupProfileInfo(SpringApplication.java:675)
+ - No active profile set, falling back to default profiles: default
+2019-07-26 14:45:10.283 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker Caller+0	 at org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker.postProcessAfterInitialization(PostProcessorRegistrationDelegate.java:330)
+ - Bean 'threadPoolConfig' of type [com.springboot.utils.thread.ThreadPoolConfig] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-07-26 14:45:10.646 [main] INFO  o.s.s.c.ThreadPoolTaskExecutor Caller+0	 at org.springframework.scheduling.concurrent.ExecutorConfigurationSupport.initialize(ExecutorConfigurationSupport.java:171)
+ - Initializing ExecutorService 'taskExecutor'
+2019-07-26 14:45:13.222 [main] INFO  o.s.s.c.ThreadPoolTaskScheduler Caller+0	 at org.springframework.scheduling.concurrent.ExecutorConfigurationSupport.initialize(ExecutorConfigurationSupport.java:171)
+ - Initializing ExecutorService 'taskScheduler'
+2019-07-26 14:45:13.332 [main] INFO  c.s.u.e.Test Caller+0	 at org.springframework.boot.StartupInfoLogger.logStarted(StartupInfoLogger.java:59)
+ - Started Test in 8.441 seconds (JVM running for 14.751)
+2019-07-26 14:45:13.734 [Thread-2] INFO  o.s.s.c.ThreadPoolTaskScheduler Caller+0	 at org.springframework.scheduling.concurrent.ExecutorConfigurationSupport.shutdown(ExecutorConfigurationSupport.java:208)
+ - Shutting down ExecutorService 'taskScheduler'
+2019-07-26 14:45:13.737 [Thread-2] INFO  o.s.s.c.ThreadPoolTaskExecutor Caller+0	 at org.springframework.scheduling.concurrent.ExecutorConfigurationSupport.shutdown(ExecutorConfigurationSupport.java:208)
+ - Shutting down ExecutorService 'taskExecutor'
+2019-07-26 14:45:49.259 [main] INFO  c.s.u.e.Test Caller+0	 at org.springframework.boot.StartupInfoLogger.logStarting(StartupInfoLogger.java:50)
+ - Starting Test on asus with PID 18447 (started by chenmingjian in /home/chenmingjian/workProjects/fengkong-2/poc/source/trunk/springboot-utils)
+2019-07-26 14:45:49.278 [main] INFO  c.s.u.e.Test Caller+0	 at org.springframework.boot.SpringApplication.logStartupProfileInfo(SpringApplication.java:675)
+ - No active profile set, falling back to default profiles: default
+2019-07-26 14:45:52.293 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker Caller+0	 at org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker.postProcessAfterInitialization(PostProcessorRegistrationDelegate.java:330)
+ - Bean 'threadPoolConfig' of type [com.springboot.utils.thread.ThreadPoolConfig] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-07-26 14:45:52.612 [main] INFO  o.s.s.c.ThreadPoolTaskExecutor Caller+0	 at org.springframework.scheduling.concurrent.ExecutorConfigurationSupport.initialize(ExecutorConfigurationSupport.java:171)
+ - Initializing ExecutorService 'taskExecutor'
+2019-07-26 14:45:54.619 [main] INFO  o.s.s.c.ThreadPoolTaskScheduler Caller+0	 at org.springframework.scheduling.concurrent.ExecutorConfigurationSupport.initialize(ExecutorConfigurationSupport.java:171)
+ - Initializing ExecutorService 'taskScheduler'
+2019-07-26 14:45:54.802 [main] INFO  c.s.u.e.Test Caller+0	 at org.springframework.boot.StartupInfoLogger.logStarted(StartupInfoLogger.java:59)
+ - Started Test in 7.092 seconds (JVM running for 9.315)
+2019-07-26 14:45:55.433 [Thread-2] INFO  o.s.s.c.ThreadPoolTaskScheduler Caller+0	 at org.springframework.scheduling.concurrent.ExecutorConfigurationSupport.shutdown(ExecutorConfigurationSupport.java:208)
+ - Shutting down ExecutorService 'taskScheduler'
+2019-07-26 14:45:55.434 [Thread-2] INFO  o.s.s.c.ThreadPoolTaskExecutor Caller+0	 at org.springframework.scheduling.concurrent.ExecutorConfigurationSupport.shutdown(ExecutorConfigurationSupport.java:208)
+ - Shutting down ExecutorService 'taskExecutor'
+2019-07-26 14:56:09.523 [main] INFO  c.s.u.e.Test Caller+0	 at org.springframework.boot.StartupInfoLogger.logStarting(StartupInfoLogger.java:50)
+ - Starting Test on asus with PID 18959 (started by chenmingjian in /home/chenmingjian/workProjects/fengkong-2/poc/source/trunk/springboot-utils)
+2019-07-26 14:56:09.529 [main] INFO  c.s.u.e.Test Caller+0	 at org.springframework.boot.SpringApplication.logStartupProfileInfo(SpringApplication.java:675)
+ - No active profile set, falling back to default profiles: default
+2019-07-26 14:56:12.677 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker Caller+0	 at org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker.postProcessAfterInitialization(PostProcessorRegistrationDelegate.java:330)
+ - Bean 'threadPoolConfig' of type [com.springboot.utils.thread.ThreadPoolConfig] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-07-26 14:56:13.111 [main] INFO  o.s.s.c.ThreadPoolTaskExecutor Caller+0	 at org.springframework.scheduling.concurrent.ExecutorConfigurationSupport.initialize(ExecutorConfigurationSupport.java:171)
+ - Initializing ExecutorService 'taskExecutor'
+2019-07-26 14:56:15.512 [main] INFO  o.s.s.c.ThreadPoolTaskScheduler Caller+0	 at org.springframework.scheduling.concurrent.ExecutorConfigurationSupport.initialize(ExecutorConfigurationSupport.java:171)
+ - Initializing ExecutorService 'taskScheduler'
+2019-07-26 14:56:15.633 [main] INFO  c.s.u.e.Test Caller+0	 at org.springframework.boot.StartupInfoLogger.logStarted(StartupInfoLogger.java:59)
+ - Started Test in 7.389 seconds (JVM running for 9.422)
+2019-07-26 14:56:35.352 [Thread-2] INFO  o.s.s.c.ThreadPoolTaskScheduler Caller+0	 at org.springframework.scheduling.concurrent.ExecutorConfigurationSupport.shutdown(ExecutorConfigurationSupport.java:208)
+ - Shutting down ExecutorService 'taskScheduler'
+2019-07-26 14:56:35.354 [Thread-2] INFO  o.s.s.c.ThreadPoolTaskExecutor Caller+0	 at org.springframework.scheduling.concurrent.ExecutorConfigurationSupport.shutdown(ExecutorConfigurationSupport.java:208)
+ - Shutting down ExecutorService 'taskExecutor'
+2019-07-26 14:57:07.543 [main] INFO  c.s.u.e.Test Caller+0	 at org.springframework.boot.StartupInfoLogger.logStarting(StartupInfoLogger.java:50)
+ - Starting Test on asus with PID 19087 (started by chenmingjian in /home/chenmingjian/workProjects/fengkong-2/poc/source/trunk/springboot-utils)
+2019-07-26 14:57:07.553 [main] INFO  c.s.u.e.Test Caller+0	 at org.springframework.boot.SpringApplication.logStartupProfileInfo(SpringApplication.java:675)
+ - No active profile set, falling back to default profiles: default
+2019-07-26 14:57:10.463 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker Caller+0	 at org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker.postProcessAfterInitialization(PostProcessorRegistrationDelegate.java:330)
+ - Bean 'threadPoolConfig' of type [com.springboot.utils.thread.ThreadPoolConfig] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-07-26 14:57:10.881 [main] INFO  o.s.s.c.ThreadPoolTaskExecutor Caller+0	 at org.springframework.scheduling.concurrent.ExecutorConfigurationSupport.initialize(ExecutorConfigurationSupport.java:171)
+ - Initializing ExecutorService 'taskExecutor'
+2019-07-26 14:57:14.206 [main] INFO  o.s.s.c.ThreadPoolTaskScheduler Caller+0	 at org.springframework.scheduling.concurrent.ExecutorConfigurationSupport.initialize(ExecutorConfigurationSupport.java:171)
+ - Initializing ExecutorService 'taskScheduler'
+2019-07-26 14:57:14.280 [main] INFO  c.s.u.e.Test Caller+0	 at org.springframework.boot.StartupInfoLogger.logStarted(StartupInfoLogger.java:59)
+ - Started Test in 8.024 seconds (JVM running for 11.047)
+2019-07-26 14:57:16.762 [Thread-2] INFO  o.s.s.c.ThreadPoolTaskScheduler Caller+0	 at org.springframework.scheduling.concurrent.ExecutorConfigurationSupport.shutdown(ExecutorConfigurationSupport.java:208)
+ - Shutting down ExecutorService 'taskScheduler'
+2019-07-26 14:57:16.763 [Thread-2] INFO  o.s.s.c.ThreadPoolTaskExecutor Caller+0	 at org.springframework.scheduling.concurrent.ExecutorConfigurationSupport.shutdown(ExecutorConfigurationSupport.java:208)
+ - Shutting down ExecutorService 'taskExecutor'

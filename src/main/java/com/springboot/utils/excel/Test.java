@@ -28,7 +28,7 @@ public class Test {
      */
     @org.junit.Test
     public void readLessThan1000Row() throws IOException {
-        String filePath = "/home/chenmingjian/Downloads/测试.xlsx";
+        String filePath = "/home/chenmingjian/Downloads/新建+XLSX+工作表.xlsx";
         List<Object> objects = ExcelUtil.readLessThan1000Row(filePath);
         objects.forEach(System.out::println);
     }
@@ -54,8 +54,8 @@ public class Test {
      */
     @org.junit.Test
     public void readMoreThan1000Row() throws IOException {
-        String filePath = "/home/chenmingjian/Downloads/测试.xlsx";
-        List<Object> objects = ExcelUtil.readMoreThan1000Row(filePath);
+        String filePath = "/home/chenmingjian/Downloads/新建+XLSX+工作表.xlsx";
+        List<List<String>> objects = ExcelUtil.readMoreThan1000Row(filePath);
         objects.forEach(System.out::println);
     }
 

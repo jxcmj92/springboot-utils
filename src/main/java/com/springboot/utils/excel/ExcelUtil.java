@@ -28,27 +28,31 @@ import java.util.List;
 @Slf4j
 public class ExcelUtil {
 
+
     /**
      * 初始化Sheet
      */
-    private static Sheet initSheet;
+    private static Sheet initSheet(){
+        Sheet initSheet = new Sheet(1, 0);
+        initSheet.setSheetName("sheet1");
+        //设置自适应宽度
+        initSheet.setAutoWidth(Boolean.TRUE);
+
+        return initSheet;
+    }
 
     /**
      * 从第二行开始读取
      */
-    public static Sheet NON_HEADER_SHEET;
-
-    static {
-        initSheet = new Sheet(1, 0);
+    public static Sheet getNonHeaderSheet(){
+        Sheet initSheet = new Sheet(1, 1);
         initSheet.setSheetName("sheet1");
         //设置自适应宽度
-      initSheet.setAutoWidth(Boolean.TRUE);
+        initSheet.setAutoWidth(Boolean.TRUE);
 
-        NON_HEADER_SHEET = new Sheet(1, 1);
-        NON_HEADER_SHEET.setSheetName("sheet1");
-        //设置自适应宽度
-      NON_HEADER_SHEET.setAutoWidth(Boolean.TRUE);
+        return initSheet;
     }
+
 
     /**
      * 从文件路径中读取少于1000行数据
@@ -85,8 +89,9 @@ public class ExcelUtil {
      * @param sheet excel样式
      */
     public static List<Object> readLessThan1000Row(InputStream inputStream,Sheet sheet) throws IOException {
-        sheet = (sheet != null) ? sheet : initSheet;
-        List<Object> data = EasyExcelFactory.read(inputStream,sheet);
+        BufferedInputStream fileStream = new BufferedInputStream(inputStream);
+        sheet = (sheet != null) ? sheet : initSheet();
+        List<Object> data = EasyExcelFactory.read(fileStream,sheet);
         inputStream.close();
         return data;
     }
@@ -119,9 +124,10 @@ public class ExcelUtil {
      * 读大于1000行数据
      */
     public static <T> List<T> readMoreThan1000Row(InputStream inputStream, Sheet sheet) throws IOException {
-        sheet = (sheet != null) ? sheet : initSheet;
+        BufferedInputStream fileStream = new BufferedInputStream(inputStream);
+        sheet = (sheet != null) ? sheet : initSheet();
         ExcelListener<T> excelListener = new ExcelListener<>();
-        EasyExcelFactory.readBySax(inputStream, sheet, excelListener);
+        EasyExcelFactory.readBySax(fileStream, sheet, excelListener);
         List<T> data = excelListener.getData();
         inputStream.close();
         return data;
@@ -227,7 +233,7 @@ public class ExcelUtil {
         OutputStream outputStream = new FileOutputStream(filePath);
         ExcelWriter writer = EasyExcelFactory.getWriter(outputStream);
         for (MultipleSheetProperty multipleSheetProperty : multipleSheetProperties) {
-            Sheet sheet = multipleSheetProperty.getSheet() != null ? multipleSheetProperty.getSheet() : initSheet;
+            Sheet sheet = multipleSheetProperty.getSheet() != null ? multipleSheetProperty.getSheet() : initSheet();
             sheet.setClazz(multipleSheetProperty.getData().get(0).getClass());
             writer.write(multipleSheetProperty.getData(), sheet);
         }
@@ -265,7 +271,7 @@ public class ExcelUtil {
     }
 
     private static void writerByTemplate(OutputStream outputStream, List<? extends BaseRowModel> data, Sheet sheet) throws IOException {
-        sheet = (sheet != null) ? sheet : initSheet;
+        sheet = (sheet != null) ? sheet : initSheet();
         sheet.setClazz(data.get(0).getClass());
         ExcelWriter writer = EasyExcelFactory.getWriter(outputStream);
         writer.write(data,sheet);
@@ -274,7 +280,7 @@ public class ExcelUtil {
     }
 
     public static void write(OutputStream outputStream,List<List<Object>> data, List<String> header,Sheet sheet) throws IOException {
-        sheet = (sheet != null) ? sheet : initSheet;
+        sheet = (sheet != null) ? sheet : initSheet();
         initHeader(sheet,header);
         ExcelWriter writer = EasyExcelFactory.getWriter(outputStream);
         writer.write1(data,sheet);
