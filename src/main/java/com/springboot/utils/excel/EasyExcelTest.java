@@ -21,7 +21,7 @@ import java.util.List;
  */
 @SpringBootTest
 @RunWith(SpringRunner.class)
-public class Test {
+public class EasyExcelTest {
 
     /**
      * 读取少于1000行的excel
@@ -29,7 +29,7 @@ public class Test {
     @org.junit.Test
     public void readLessThan1000Row() throws IOException {
         String filePath = "/home/chenmingjian/Downloads/新建+XLSX+工作表.xlsx";
-        List<Object> objects = ExcelUtil.readLessThan1000Row(filePath);
+        List<Object> objects = EasyExcelUtil.readLessThan1000Row(filePath);
         objects.forEach(System.out::println);
     }
 
@@ -41,7 +41,7 @@ public class Test {
         String filePath = "/home/chenmingjian/Downloads/测试.xlsx";
         //表示从sheet1表格中，从第二行开始读取
         Sheet sheet = new Sheet(1, 1);
-        List<Object> objects = ExcelUtil.readLessThan1000Row(filePath,sheet);
+        List<Object> objects = EasyExcelUtil.readLessThan1000Row(filePath,sheet);
 
         //也可以这样表示： 从sheet1表格中，从第二行开始读取
        // List<Object> objects = ExcelUtil.readLessThan1000Row(filePath,ExcelUtil.NON_HEADER_SHEET);
@@ -55,7 +55,7 @@ public class Test {
     @org.junit.Test
     public void readMoreThan1000Row() throws IOException {
         String filePath = "/home/chenmingjian/Downloads/新建+XLSX+工作表.xlsx";
-        List<List<String>> objects = ExcelUtil.readMoreThan1000Row(filePath);
+        List<List<String>> objects = EasyExcelUtil.readMoreThan1000Row(filePath);
         objects.forEach(System.out::println);
     }
 
@@ -72,7 +72,7 @@ public class Test {
         data.add(Arrays.asList("111","222","333"));
         data.add(Arrays.asList("111","222","333"));
         List<String> head = Arrays.asList("表头1", "表头2", "表头3");
-        ExcelUtil.writeToFilePath(filePath,data,head);
+        EasyExcelUtil.writeToFilePath(filePath,data,head);
     }
 
 
@@ -91,7 +91,7 @@ public class Test {
             tableHeaderExcelProperty.setSchool("清华大学" + i);
             data.add(tableHeaderExcelProperty);
         }
-        ExcelUtil.writeWithTemplateToFilePath(filePath,data);
+        EasyExcelUtil.writeWithTemplateToFilePath(filePath,data);
     }
 
 
@@ -100,7 +100,7 @@ public class Test {
      */
     @org.junit.Test
     public void writeWithMultipleSheet() throws IOException {
-        ArrayList<ExcelUtil.MultipleSheetProperty> list1 = new ArrayList<>();
+        ArrayList<EasyExcelUtil.MultipleSheetProperty> list1 = new ArrayList<>();
         for(int j = 1; j < 4; j++){
             ArrayList<TableHeaderExcelProperty> list = new ArrayList<>();
             for(int i = 0; i < 4; i++){
@@ -114,7 +114,7 @@ public class Test {
             Sheet sheet = new Sheet(j, 0);
             sheet.setSheetName("sheet" + j);
 
-            ExcelUtil.MultipleSheetProperty multipleSheetProperty = new ExcelUtil.MultipleSheetProperty();
+            EasyExcelUtil.MultipleSheetProperty multipleSheetProperty = new EasyExcelUtil.MultipleSheetProperty();
             multipleSheetProperty.setData(list);
             multipleSheetProperty.setSheet(sheet);
 
@@ -122,7 +122,7 @@ public class Test {
 
         }
 
-        ExcelUtil.writeWithMultipleSheet("/home/chenmingjian/Downloads/aaa.xlsx",list1);
+        EasyExcelUtil.writeWithMultipleSheet("/home/chenmingjian/Downloads/aaa.xlsx",list1);
 
     }
 

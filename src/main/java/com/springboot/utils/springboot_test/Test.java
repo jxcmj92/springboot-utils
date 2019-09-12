@@ -1,19 +1,15 @@
 package com.springboot.utils.springboot_test;
 
-import ch.qos.logback.core.util.FileUtil;
 import com.alibaba.excel.EasyExcelFactory;
 import com.alibaba.excel.ExcelWriter;
 import com.alibaba.excel.metadata.BaseRowModel;
 import com.alibaba.excel.metadata.Sheet;
 import com.alibaba.excel.support.ExcelTypeEnum;
 import com.alibaba.fastjson.JSONObject;
-import com.springboot.utils.excel.ExcelUtil;
-import com.springboot.utils.zip.GZip;
-import com.springboot.utils.zip.ZipFileUtil;
+import com.springboot.utils.excel.EasyExcelTest;
+import com.springboot.utils.excel.EasyExcelUtil;
 import com.springboot.utils.zip.ZipFileUtil2;
-import groovy.json.internal.IO;
 import org.apache.commons.io.IOUtils;
-import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -43,7 +39,7 @@ public class Test {
     @GetMapping("/download")
     public void test4(/*HttpServletResponse response*/) throws IOException {
         String filePath = "/home/chenmingjian/Downloads/新建+XLSX+工作表.xlsx";
-        List<List<String>> objects = ExcelUtil.readMoreThan1000Row(filePath);
+        List<List<String>> objects = EasyExcelUtil.readMoreThan1000Row(filePath);
 ////        ExcelUtil.writeToBrowser(objects,null,response);
 //
 //        List<SaleExcel> saleExcels = new ArrayList<>();
@@ -53,22 +49,22 @@ public class Test {
 
         List<List<String>> lists = get();
 
-        ArrayList<com.springboot.utils.excel.Test.TableHeaderExcelProperty> data = new ArrayList<>();
+        ArrayList<EasyExcelTest.TableHeaderExcelProperty> data = new ArrayList<>();
         for(int i = 0; i < 4; i++){
-            com.springboot.utils.excel.Test.TableHeaderExcelProperty tableHeaderExcelProperty = new com.springboot.utils.excel.Test.TableHeaderExcelProperty();
+            EasyExcelTest.TableHeaderExcelProperty tableHeaderExcelProperty = new EasyExcelTest.TableHeaderExcelProperty();
             tableHeaderExcelProperty.setName("cmj" + i);
             tableHeaderExcelProperty.setAge(22 + i);
             tableHeaderExcelProperty.setSchool("清华大学" + i);
             data.add(tableHeaderExcelProperty);
         }
-        ExcelUtil.writeWithTemplateToFilePath( "/home/chenmingjian/Downloads/测试.xlsx",data);
+        EasyExcelUtil.writeWithTemplateToFilePath( "/home/chenmingjian/Downloads/测试.xlsx",data);
     }
 
 
     public List<List<String>> get() throws IOException {
         String filePath = "/home/chenmingjian/Downloads/新建+XLSX+工作表.xlsx";
         BufferedInputStream fileStream = new BufferedInputStream(new FileInputStream(filePath));
-        ExcelUtil.ExcelListener excelListener = new ExcelUtil.ExcelListener();
+        EasyExcelUtil.ExcelListener excelListener = new EasyExcelUtil.ExcelListener();
         EasyExcelFactory.readBySax(fileStream, new Sheet(1, 0), excelListener);
         List data = excelListener.getData();
         fileStream.close();
@@ -154,16 +150,16 @@ public class Test {
         String sheetName = "数据展示";
 
         // 按条件筛选records
-        ArrayList<com.springboot.utils.excel.Test.TableHeaderExcelProperty> data = new ArrayList<>();
+        ArrayList<EasyExcelTest.TableHeaderExcelProperty> data = new ArrayList<>();
         for(int i = 0; i < 4; i++){
-            com.springboot.utils.excel.Test.TableHeaderExcelProperty tableHeaderExcelProperty = new com.springboot.utils.excel.Test.TableHeaderExcelProperty();
+            EasyExcelTest.TableHeaderExcelProperty tableHeaderExcelProperty = new EasyExcelTest.TableHeaderExcelProperty();
             tableHeaderExcelProperty.setName("cmj" + i);
             tableHeaderExcelProperty.setAge(22 + i);
             tableHeaderExcelProperty.setSchool("清华大学88888888888888" + i);
             data.add(tableHeaderExcelProperty);
         }
 
-        ExcelUtil.writeWithTemplateToBrowser(data,response);
+        EasyExcelUtil.writeWithTemplateToBrowser(data,response);
 
         return "success";
     }

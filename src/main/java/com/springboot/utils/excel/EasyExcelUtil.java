@@ -26,7 +26,7 @@ import java.util.List;
  * @date: 19-3-18 16:16
  */
 @Slf4j
-public class ExcelUtil {
+public class EasyExcelUtil {
 
 
     /**
