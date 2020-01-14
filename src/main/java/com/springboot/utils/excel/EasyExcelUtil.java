@@ -58,7 +58,7 @@ public class EasyExcelUtil {
      * 从文件路径中读取少于1000行数据
      * @param filePath 文件绝对路径
      */
-    public static List<Object> readLessThan1000Row(String filePath) throws IOException {
+    public static <T> List<T> readLessThan1000Row(String filePath) throws IOException {
         return readLessThan1000Row(filePath,null);
     }
 
@@ -70,7 +70,7 @@ public class EasyExcelUtil {
      *      headLineMun: 从第几行开始读取数据，默认为0, 表示从第一行开始读取
      *      clazz: 返回数据List<Object> 中Object的类名
      */
-    public static List<Object> readLessThan1000Row(String filePath, Sheet sheet) throws IOException {
+    public static <T> List<T> readLessThan1000Row(String filePath, Sheet sheet) throws IOException {
         InputStream fileStream = new FileInputStream(filePath);
         return readLessThan1000Row(fileStream,sheet);
     }
@@ -79,7 +79,7 @@ public class EasyExcelUtil {
      * 读取小于1000行数据
      * @param inputStream excel输入流
      */
-    public static List<Object> readLessThan1000Row(InputStream inputStream) throws IOException {
+    public static <T> List<T> readLessThan1000Row(InputStream inputStream){
         return readLessThan1000Row(inputStream,null);
     }
 
@@ -88,12 +88,25 @@ public class EasyExcelUtil {
      * @param inputStream excel输入流
      * @param sheet excel样式
      */
-    public static List<Object> readLessThan1000Row(InputStream inputStream,Sheet sheet) throws IOException {
-        BufferedInputStream fileStream = new BufferedInputStream(inputStream);
-        sheet = (sheet != null) ? sheet : initSheet();
-        List<Object> data = EasyExcelFactory.read(fileStream,sheet);
-        inputStream.close();
-        return data;
+    public static <T> List<T> readLessThan1000Row(InputStream inputStream, Sheet sheet) {
+        try {
+            if(inputStream != null){
+                BufferedInputStream fileStream = new BufferedInputStream(inputStream);
+                sheet = (sheet != null) ? sheet : initSheet();
+                List<Object> data = EasyExcelFactory.read(fileStream,sheet);
+                return (List<T>) data;
+            }
+        }catch (Exception e){
+            log.error("excel读取失败");
+        }finally {
+            try {
+                inputStream.close();
+            } catch (IOException e) {
+                log.error("excel读取失败");
+            }
+        }
+
+        return Collections.emptyList();
     }
 
     /**
@@ -155,7 +168,6 @@ public class EasyExcelUtil {
     public static void writeToFilePath(String filePath, List<List<Object>> data, List<String> header, Sheet sheet) throws IOException {
         OutputStream outputStream = new FileOutputStream(filePath);
         write(outputStream,data,header,sheet);
-
     }
 
     /**
