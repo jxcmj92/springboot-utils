@@ -243,8 +243,8 @@ public class PoiExcelUtil {
         public static void addMergedRegion(Sheet sheet, Object value,int firstRow, int lastRow, int firstCol, int lastCol) {
             if (lastRow > firstRow || lastCol > firstCol) {
                 sheet.addMergedRegion(new CellRangeAddress(firstRow, lastRow, firstCol, lastCol));
-                Row row = sheet.getRow(firstRow) != null ? sheet.getRow(firstRow) : sheet.createRow(firstRow);
-                Cell cell = row.getCell(firstCol) != null ? row.getCell(firstCol) : row.createCell(firstCol);
+                Row row = getRow(sheet,firstRow);
+                Cell cell = getCell(row,firstCol);
                 cell.setCellValue(String.valueOf(value));
             }
         }
@@ -258,10 +258,11 @@ public class PoiExcelUtil {
          */
         public static void addRowGroundColor(Workbook workbook, int rowNum, short index) {
             Sheet sheet = workbook.getSheetAt(0);
-            Row row = sheet.getRow(rowNum) == null ? sheet.createRow(rowNum) : sheet.getRow(rowNum);
+            Row row = getRow(sheet,rowNum);
             CellStyle cellStyle = null;
             for (Cell cell : row) {
-                cellStyle = (row.getRowStyle() == null || cell.getCellStyle() == null) ? workbook.createCellStyle() : cell.getCellStyle();
+                cellStyle = workbook.createCellStyle();
+                cellStyle.cloneStyleFrom(cell.getCellStyle());
                 cellStyle.setFillForegroundColor(index);
                 cellStyle.setFillPattern(FillPatternType.SOLID_FOREGROUND);
                 setAllBorder(cellStyle);
@@ -315,7 +316,8 @@ public class PoiExcelUtil {
             Sheet sheet = workbook.getSheetAt(0);
             Row row = sheet.getRow(rowNum) == null ? sheet.createRow(rowNum) : sheet.getRow(rowNum);
             row.forEach(cell -> {
-                CellStyle cellStyle = (row.getRowStyle() == null || cell.getCellStyle() == null) ? workbook.createCellStyle() : cell.getCellStyle();
+                CellStyle cellStyle = workbook.createCellStyle();
+                cellStyle.cloneStyleFrom(cell.getCellStyle());
                 cellStyle.setAlignment(horizontalType);
                 cellStyle.setVerticalAlignment(verticalAlignmentType);
                 cell.setCellStyle(cellStyle);
@@ -343,10 +345,12 @@ public class PoiExcelUtil {
          */
         public static void addRowFont(Workbook workbook,int rowNum,Font font){
             Sheet sheet = workbook.getSheetAt(0);
-            Row row = sheet.getRow(rowNum) == null ? sheet.createRow(rowNum) : sheet.getRow(rowNum);
+            Row row = getRow(sheet,rowNum);
             row.forEach(column ->{
-                CellStyle cellStyle = column.getCellStyle() == null ? workbook.createCellStyle() : column.getCellStyle();
+                CellStyle cellStyle = workbook.createCellStyle();
+                cellStyle.cloneStyleFrom(column.getCellStyle());
                 cellStyle.setFont(font);
+                column.setCellStyle(cellStyle);
             });
         }
 
@@ -431,5 +435,21 @@ public class PoiExcelUtil {
             patriarch.createPicture(anchor, workbook.addPicture(byteArrayOut
                     .toByteArray(), XSSFWorkbook.PICTURE_TYPE_JPEG));
         }
+
+
+        /**
+         * @param rowNum 行号
+         */
+        private static Row getRow(Sheet sheet,int rowNum){
+            return sheet.getRow(rowNum) == null ? sheet.createRow(rowNum) : sheet.getRow(rowNum);
+        }
+
+        /**
+         * @param colNum 单元格号
+         */
+        private static Cell getCell(Row row,int colNum){
+            return row.getCell(colNum) != null ? row.getCell(colNum) : row.createCell(colNum);
+        }
     }
+
 }
